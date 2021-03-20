@@ -1,31 +1,35 @@
-<form class="user-form">
+<div class="user-form">
   <div>Add User Form</div>
 
-  <mat-form-field>
-    <input matInput placeholder="First Name" />
-  </mat-form-field>
+  <div *ngFor="let item of counterArr; let i = index">
 
-  <mat-form-field>
-    <input matInput placeholder="Last Name" />
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="First Name" [(ngModel)]="formVal[i].fname" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Email" />
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Last Name" [(ngModel)]="formVal[i].lname" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Mobile" />
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" [(ngModel)]="formVal[i].email" />
+    </mat-form-field>
 
-  <button mat-icon-button color="primary">
-    <mat-icon>add_box</mat-icon>
-  </button>
+    <mat-form-field>
+      <input matInput placeholder="Mobile" [(ngModel)]="formVal[i].mobile" />
+    </mat-form-field>
 
-  <button mat-icon-button color="warn">
-    <mat-icon>delete</mat-icon>
-  </button>
+    <div *ngIf="i+1 == counterArr.length">
+      <button mat-icon-button color="primary" (click)="addRow()">
+        <mat-icon>add_box</mat-icon>
+      </button>
 
-  <div>
-    <button mat-raised-button color="primary">Submit</button>
+      <button mat-icon-button color="warn" (click)="removeRow()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
   </div>
-</form>
+  <div>
+    <button mat-raised-button color="primary" (click)="saveValue()">Submit</button>
+  </div>
+</div>
