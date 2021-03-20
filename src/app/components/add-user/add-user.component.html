@@ -1,35 +1,53 @@
-<div class="user-form">
-  <div>Add User Form</div>
+<div class="container-fluid">
+  <h3>Add User Form</h3>
+  <hr />
+  <div class="panel panel-default" *ngFor="let item of counterArr; let i = index">
+    <div class="panel-body row">
+      <div class="col-md-2 col-xs-6">
+        <mat-form-field class="w-100">
+          <input matInput placeholder="First Name" [(ngModel)]="formVal[i].fname" />
+        </mat-form-field>
+      </div>
+      <div class="col-md-2 col-xs-6">
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Last Name" [(ngModel)]="formVal[i].lname" />
+        </mat-form-field>
+      </div>
+      <div class="col-md-2 col-xs-6">
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Email" [(ngModel)]="formVal[i].email" />
+        </mat-form-field>
+      </div>
+      <div class="col-md-2 col-xs-6">
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Mobile" [(ngModel)]="formVal[i].mobile" />
+        </mat-form-field>
+      </div>
+      <div class="col-md-2 col-xs-6">
+        <mat-form-field class="w-100">
+          <mat-label>City</mat-label>
+          <mat-select [(value)]="formVal[i].city">
+            <mat-option value="Pune">Pune</mat-option>
+            <mat-option value="Mumbai">Mumbai</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2 col-xs-6" *ngIf="i+1 == counterArr.length">
+        <button mat-icon-button color="primary" (click)="addRow()">
+          <mat-icon>add_box</mat-icon>
+        </button>
 
-  <div *ngFor="let item of counterArr; let i = index">
-
-    <mat-form-field>
-      <input matInput placeholder="First Name" [(ngModel)]="formVal[i].fname" />
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Last Name" [(ngModel)]="formVal[i].lname" />
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Email" [(ngModel)]="formVal[i].email" />
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Mobile" [(ngModel)]="formVal[i].mobile" />
-    </mat-form-field>
-
-    <div *ngIf="i+1 == counterArr.length">
-      <button mat-icon-button color="primary" (click)="addRow()">
-        <mat-icon>add_box</mat-icon>
-      </button>
-
-      <button mat-icon-button color="warn" (click)="removeRow()">
-        <mat-icon>delete</mat-icon>
-      </button>
+        <button mat-icon-button color="warn" (click)="removeRow()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
-  <div>
-    <button mat-raised-button color="primary" (click)="saveValue()">Submit</button>
+
+  <div class="row text-cente">
+    <div class="col-md-2 col-xs-6 col-xs-offset-5">
+      <button mat-raised-button color="primary" (click)="saveValue()">Submit</button>
+    </div>
   </div>
+
 </div>

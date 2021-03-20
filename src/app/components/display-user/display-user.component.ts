@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 import { StoreService } from "./../../services/store.service";
 import { Router } from '@angular/router';
 
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 
 export class DisplayUserComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   public userList = []
   public dataSource;
   public displayedColumns;
@@ -20,8 +22,12 @@ export class DisplayUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.displayedColumns = ['id', 'fname', 'lname', 'email', 'mobile'];
+    this.displayedColumns = ['id', 'fname', 'lname', 'email', 'mobile', 'city'];
     this.dataSource = new MatTableDataSource(this.userList);
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(event: Event) {

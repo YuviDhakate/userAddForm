@@ -3,17 +3,20 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class StoreService {
   public userStore = []
-  constructor() { }
+  constructor() {
+    let userList = localStorage.getItem('userStore')
+    this.userStore = userList ? JSON.parse(userList) : []
+  }
 
   setUsers(formVal) {
     formVal.forEach((item) => {
-      let currItem = this.userStore[this.userStore.length - 1]
-      item['id'] = currItem ? currItem.id + 1 : 1
-      this.userStore.push(item)
+      item['id'] = this.userStore.length + 1
+      this.userStore.unshift(item)
     })
-    console.log(this.userStore)
+    localStorage.setItem('userStore', JSON.stringify(this.userStore));
   }
 
   getUsers() {

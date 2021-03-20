@@ -21,7 +21,8 @@ export class AddUserComponent implements OnInit {
       fname: '',
       lname: '',
       email: '',
-      mobile: ''
+      mobile: '',
+      city: ''
     }))
   }
 
@@ -36,7 +37,8 @@ export class AddUserComponent implements OnInit {
       fname: '',
       lname: '',
       email: '',
-      mobile: ''
+      mobile: '',
+      city: ''
     })
     console.log(this.counter, this.counterArr)
   }
