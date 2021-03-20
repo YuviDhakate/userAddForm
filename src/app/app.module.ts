@@ -8,6 +8,7 @@ import { MaterialModule } from './material.module';
 import { AddUserComponent } from './components/add-user/add-user.component'
 import { DisplayUserComponent } from './components/display-user/display-user.component'
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

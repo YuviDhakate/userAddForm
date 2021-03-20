@@ -2,31 +2,31 @@
   <h3>Add User Form</h3>
   <hr />
   <div class="panel panel-default" *ngFor="let item of counterArr; let i = index">
-    <div class="panel-body row">
+    <form class="panel-body row">
       <div class="col-md-2 col-xs-6">
         <mat-form-field class="w-100">
-          <input matInput placeholder="First Name" [(ngModel)]="formVal[i].fname" />
+          <input matInput placeholder="First Name" [formControl]="formVal[i].fname" />
         </mat-form-field>
       </div>
       <div class="col-md-2 col-xs-6">
         <mat-form-field class="w-100">
-          <input matInput placeholder="Last Name" [(ngModel)]="formVal[i].lname" />
+          <input matInput placeholder="Last Name" [formControl]="formVal[i].lname" />
         </mat-form-field>
       </div>
       <div class="col-md-2 col-xs-6">
         <mat-form-field class="w-100">
-          <input matInput placeholder="Email" [(ngModel)]="formVal[i].email" />
+          <input matInput placeholder="Email" [formControl]="formVal[i].email" />
         </mat-form-field>
       </div>
       <div class="col-md-2 col-xs-6">
         <mat-form-field class="w-100">
-          <input matInput placeholder="Mobile" [(ngModel)]="formVal[i].mobile" />
+          <input matInput placeholder="Mobile" [formControl]="formVal[i].mobile" />
         </mat-form-field>
       </div>
       <div class="col-md-2 col-xs-6">
         <mat-form-field class="w-100">
           <mat-label>City</mat-label>
-          <mat-select [(value)]="formVal[i].city">
+          <mat-select [formControl]="formVal[i].city">
             <mat-option value="Pune">Pune</mat-option>
             <mat-option value="Mumbai">Mumbai</mat-option>
           </mat-select>
@@ -37,11 +37,11 @@
           <mat-icon>add_box</mat-icon>
         </button>
 
-        <button mat-icon-button color="warn" (click)="removeRow()">
+        <button mat-icon-button color="warn" (click)="removeRow()" [disabled]="i==0">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
-    </div>
+    </form>
   </div>
 
   <div class="row text-cente">
